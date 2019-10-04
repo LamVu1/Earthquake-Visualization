@@ -1,5 +1,5 @@
 
-import {bob} from './api';
+import {getEvents} from './api';
 import {initMap} from './map';
 import {parseData} from './utils';
 
@@ -8,8 +8,8 @@ import {parseData} from './utils';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-initMap();
-
+    
+    getEvents().then((data)=>initMap(data))
 })
 
 

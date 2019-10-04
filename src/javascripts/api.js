@@ -1,10 +1,9 @@
 
-export const bob = () => {
-    let url='https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-09-01&minmagnitude=5';
+export const getEvents = () => {
+    let url='https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=32.399&maxlatitude=42.294&minlongitude=-124.321&maxlongitude=-114.258';
     return(
     fetch(url)
-    .then((response)=>response.json())
-    .then((data)=>(data)));
+    .then((response)=>response.json()));
    
 }
 
