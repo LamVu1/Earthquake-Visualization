@@ -8,21 +8,30 @@
     <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBiOpIB-yeuF9pNIl4nFThwxLewJP5r4KE&callback=initMap"
   type="text/javascript"></script>
     <script type="text/javascript" src="./bundle.js"></script>
-    <!-- <script 
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script> -->
-    <!-- <style type="text/css">
-        #map {
-            width: 500px;
-            height: 500px;
-        }
-    </style> -->
-    <link rel="stylesheet" href="../src/CSS/style.css">
+
+    <link rel="stylesheet" href="./src/CSS/style.css">
     <title>Document</title>
 </head>
 <body>
     <div id="map"></div>
-    <h1>Test</h1>
-    
+    <form id="filter">
+        <label>Start Date:
+            <input type="date" id="lower">
+        </label>
+        <label>
+            End Date:
+            <input type="date" id="higher">
+        </label>
+        <label>
+            Max Magnitude:
+            <input type="text" id="max-mag">
+        </label>
+        <label>
+            Min Magnitude:
+            <input type="text" id="min-mag">
+        </label>
+        <button type="submit" value="Filter" >Filter</button>
+
+    </form>    
 </body>
 </html>

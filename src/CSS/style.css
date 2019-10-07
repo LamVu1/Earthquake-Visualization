@@ -18,6 +18,7 @@ span, article, footer, time, small {
 body{
     margin: 0;
     overflow: hidden;
+    background-color: rgb(57, 57, 226);
 }
 
 p {
@@ -69,7 +70,9 @@ button {
   -moz-appearance: none;
   appearance: none;
 }
-
+input{
+  background-color: white;
+}
 button,
 input[type="submit"] {
   cursor: pointer;
@@ -91,8 +94,21 @@ div {
     position: initial;
 } 
 
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
 #map {
-    width: 100%;
-    height:100%;
+    width: 75%;
+    height:75%;
 
   }
+

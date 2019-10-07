@@ -196,37 +196,83 @@ export const initMap=function(data) {
     center: { lat: 36.778, lng:  -119.417},
     zoom: 7,
     styles: style,
-    mapTypeId: 'terrain'
+    mapTypeId: 'terrain',
+    icon: {
+      fillColor: '#fcfcfc',
+      fillOpacity: 0,
+      strokeColor: '',
+      strokeWeight: 0
+    }
 
   });
  
-  // const heatmapData=[];
+  
   for(let i=0; i<data.features.length;i++){
     let coords = data.features[i].geometry.coordinates;
-  
     var latLng = new google.maps.LatLng(coords[1],coords[0]);
-    let mag=data.features[i].properties.mag;
-        var p=new google.maps.Circle({
-          strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 2/mag,
-            map: map,
-            center: latLng,
-            radius: Math.pow(10,mag)
-        })
-        
-    // heatmapData.push({location: latLng, weight:Math.pow(2,mag)});
-    // var marker = new google.maps.Marker({
-    //   position: latLng,
-    //   map: map,
-    // icon: icon});
-  // var heatmap = new google.maps.visualization.HeatmapLayer({
-  //   data: heatmapData,
-  //   dissipating: false,
-  //   map: map
-  // });
-    }}
+    let content = data.features[i].properties.place
+    let mag=data.features[i].properties.mag
+    const low = [90, 100, 69]; 
+    const high = [5, 69, 54]; 
+    const minMag = 2;
+    const maxMag = 6.0;
+    const frac = mag/(maxMag-minMag)
+    function HSL(low,high,frac){
+      let colors=[];
+      for(let i=0; i<3;i++){
+        colors[i]=(high[i]-low[i])*frac+low[i];
+      }
+      return 'hsl(' + colors[0] + ',' + colors[1] + '%,' + colors[2] + '%)';
+    }
+    const color = HSL(low,high, frac);
+
+    let circle=new google.maps.Circle({
+      strokeColor: '#ffffff',
+        strokeOpacity: .3,
+        strokeWeight: 1,
+        fillColor: color,
+        fillOpacity: 1,
+        map: map,
+        center: latLng,
+        radius: Math.pow(10,mag)
+    })
+    let marker = new google.maps.Marker({
+      position: latLng,
+      map: map
+    });
+
+    let infowindow = new google.maps.InfoWindow({
+      content: 'Location: '+content +'\n' +' Magnitude: '+mag
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+}
+
+      
 
 
+
+
+
+
+
+
+
+
+
+
+// const heatmapData=[];
+      
+      // heatmapData.push({location: latLng, weight:Math.pow(2,mag)});
+      // var marker = new google.maps.Marker({
+      //   position: latLng,
+      //   map: map,
+      // icon: icon});
+    // var heatmap = new google.maps.visualization.HeatmapLayer({
+    //   data: heatmapData,
+    //   dissipating: false,
+    //   map: map
+    // })

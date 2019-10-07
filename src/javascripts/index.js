@@ -2,14 +2,23 @@
 import {getEvents} from './api';
 import {initMap} from './map';
 import {parseData} from './utils';
+import {filter} from './form';
 
 
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    getEvents().then((data)=>initMap(data));
+    const form = document.getElementById('filter');
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        filter().then((data)=>initMap(data))
     
-    getEvents().then((data)=>initMap(data))
+    })
+
+
+    // getEvents().then((data)=>initMap(data))
 })
 
 
