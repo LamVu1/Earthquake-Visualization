@@ -1,5 +1,5 @@
 # Earthquake-Visualization
-https://lamvu1.github.io/Earthquake-Visualization/
+![GitHub Logo](src/assets/Screenshot from 2019-10-08 15-05-08.png)
 
 ## MVP
 - Use Api from USGS to retreive earthquake data and Google maps to display location of earthquakes.
