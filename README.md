@@ -1,7 +1,7 @@
 # Earthquake-Visualization
-![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/chrome-capture.gif)
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/Peek%202019-10-08%2016-04.gif)
 
-[Earthquake Visualizer](http://google.com)
+[Earthquake Visualizer](https://lamvu1.github.io/Earthquake-Visualization/)
 
 ## MVP
 Earthquake Visualizer is a visualization web-app which displays earthquake events in California using Google Maps API.
