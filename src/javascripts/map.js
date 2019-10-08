@@ -276,7 +276,7 @@ export const initMap=function(data) {
      
 
    let infowindow = new google.maps.InfoWindow({
-      content: "<p>"+'Location: '+content +"<br />"+' Magnitude: '+mag+"<br />"+ 'Date: '+d+ "<p>"
+      content: "<p>"+'Location: '+content +"<br />"+'Date: '+d+"<br />"+ ' Magnitude: '+mag+ "<p>"
     });
 
     // marker.addListener('click', function() {
