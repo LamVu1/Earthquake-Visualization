@@ -8,30 +8,40 @@
     <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBiOpIB-yeuF9pNIl4nFThwxLewJP5r4KE&callback=initMap"
   type="text/javascript"></script>
     <script type="text/javascript" src="./bundle.js"></script>
+    <script type="text/javascript" src="./src/javascripts/markerclusterer.js"></script>
 
     <link rel="stylesheet" href="./src/CSS/style.css">
-    <title>Document</title>
+    <title>Earthquake Visualizer</title>
 </head>
 <body>
-    <div id="map"></div>
-    <form id="filter">
-        <label>Start Date:
-            <input type="date" id="lower">
-        </label>
-        <label>
-            End Date:
-            <input type="date" id="higher">
-        </label>
-        <label>
-            Max Magnitude:
-            <input type="text" id="max-mag">
-        </label>
-        <label>
-            Min Magnitude:
-            <input type="text" id="min-mag">
-        </label>
-        <button type="submit" value="Filter" >Filter</button>
-
-    </form>    
+    <div id="Title-Container">Earthquake Visualizer</div>
+    <div id="Main-Container">
+        <div id="map"></div>
+        <div id="Instructions-Container">
+            <p id="Instructions">Instructions:</p>
+            <p id="Instructions-Steps">Filter earthquake events on the map by <b>Start Date</b>  and <b>End Date</b>. If no specified <b>End Date</b> then <b>End Date</b> is set to current date. If State Date and End Date are left <b>blank</b> then all records of earthquake events will be shown.</p>
+            <div id="Filter-Container">
+                <form id="filter">
+                    <label>Start Date:
+                        <input type="date" id="lower">
+                    </label>
+                    <label>
+                        End Date:
+                        <input type="date" id="higher">
+                    </label>
+                    <label>
+                        Max Magnitude:
+                        <input type="text" id="max-mag">
+                    </label>
+                    <label>
+                        Min Magnitude:
+                        <input type="text" id="min-mag">
+                    </label>
+                    <button type="submit" value="Filter" id="filter-btn">Filter</button>
+                </form>    
+            </div>
+            <p id="Map-Info">Clicking on marker cluster will zoom in and expand markers. Clicking a marker will show information window. Information window will include Location, Date, and Magnitude of event.</p>
+        </div>
+    </div>
 </body>
 </html>

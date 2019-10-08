@@ -18,7 +18,8 @@ span, article, footer, time, small {
 body{
     margin: 0;
     overflow: hidden;
-    background-color: rgb(57, 57, 226);
+    background-color: grey;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 p {
@@ -29,6 +30,8 @@ p {
 }
 
 label{
+  padding-top: 10px;
+  padding-bottom: 10px;
     font-family: inherit;
     font-weight: inherit;
   color: inherit;
@@ -72,6 +75,14 @@ button {
 }
 input{
   background-color: white;
+  border-radius: 3pt;
+  height: 24px;
+  margin-left: 5px;
+}
+
+
+input:hover{
+  background-color:#D4F1F4;
 }
 button,
 input[type="submit"] {
@@ -84,8 +95,8 @@ input[type="submit"] {
   clear: both;
 }
 html, body {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -103,12 +114,75 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
+button:hover{
+  background-color: rgb(54, 224, 60);
+}
 
 #map {
-    width: 75%;
+    width: 70%;
     height:75%;
 
   }
+#Instructions-Container{
+  width: 30%;
+  height: 70%;
+    margin: 0px 30px 30px 30px;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: left;
+    background-color: #F4F4F4;
+    padding: 20px;
+   
+}  
+
+#Instructions{
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+#Instructions-Steps{
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+
+  letter-spacing: .04em;
+}
+
+#Main-Container{
+  background-color: #D6DFE0;
+  padding: 40px 50px 50px 50px;
+  height: 90%;
+  width: 95%;
+  display: flex;
+  flex-direction: row-reverse ;
+}
+
+#Title-Container{
+  background-color: #00A8A8;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 50px;
+  color: white;
+  letter-spacing: -0.04em;
+  font-weight: bolder;
+  padding: 50px 50px 10px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#Filter-Container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#filter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
 

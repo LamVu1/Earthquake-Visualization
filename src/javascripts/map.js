@@ -174,10 +174,21 @@ export const initMap=function(data) {
     },
     {
       "featureType": "water",
+      "stylers": [
+        {
+          "visibility": "on"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#000000"
+          "color": "#9cdfda"
+        },
+        {
+          "visibility": "on"
         }
       ]
     },
@@ -186,10 +197,13 @@ export const initMap=function(data) {
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#3d3d3d"
+          "color": "#9e9e9e"
         }
       ]
     }
+    
+  
+    
   ]
 
   
@@ -198,9 +212,11 @@ export const initMap=function(data) {
     center: { lat: 36.778, lng:  -119.417},
     zoom: 7,
     styles: style,
-    mapTypeId: 'terrain'
+    gestureHandling: 'greedy'
+    // mapTypeId: 'terrain'
 
   });
+  let markers=[];
  
   
   for(let i=0; i<data.features.length;i++){
@@ -254,10 +270,13 @@ export const initMap=function(data) {
       // size: new google.maps.Size(100, 100)}
       }
       )
-      marker.setOptions({'opacity': 0})
+
+      markers.push(marker)
+      // marker.setOptions({'opacity': 0})
+     
 
    let infowindow = new google.maps.InfoWindow({
-      content: 'Location: '+content +"\n"+' Magnitude: '+mag+"\n"+ 'Date: '+d
+      content: "<p>"+'Location: '+content +"<br />"+' Magnitude: '+mag+"<br />"+ 'Date: '+d+ "<p>"
     });
 
     // marker.addListener('click', function() {
@@ -279,10 +298,13 @@ export const initMap=function(data) {
           infowindow.close();
           marker.open = false;
       }
-    });
+    }); 
 
 
-  }
+  };
+
+  var markerCluster = new MarkerClusterer(map, markers,
+    {imagePath: '/home/lam/Desktop/Earthquake/src/assets/m'});
 }
 
       
