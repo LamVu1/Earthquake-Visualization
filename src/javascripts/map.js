@@ -191,18 +191,14 @@ export const initMap=function(data) {
       ]
     }
   ]
+
+  
   
     const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 36.778, lng:  -119.417},
     zoom: 7,
     styles: style,
-    mapTypeId: 'terrain',
-    icon: {
-      fillColor: '#fcfcfc',
-      fillOpacity: 0,
-      strokeColor: '',
-      strokeWeight: 0
-    }
+    mapTypeId: 'terrain'
 
   });
  
@@ -216,6 +212,8 @@ export const initMap=function(data) {
     const high = [5, 69, 54]; 
     const minMag = 2;
     const maxMag = 6.0;
+    let d = new Date(data.features[i].properties.time);
+
     const frac = mag/(maxMag-minMag)
     function HSL(low,high,frac){
       let colors=[];
@@ -236,18 +234,54 @@ export const initMap=function(data) {
         center: latLng,
         radius: Math.pow(10,mag)
     })
+
+    // var image = {
+    //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+    //   // This marker is 20 pixels wide by 32 pixels high.
+    //   size: new google.maps.Size(20, 32),
+    //   // The origin for this image is (0, 0).
+    //   origin: new google.maps.Point(0, 0),
+    //   // The anchor for this image is the base of the flagpole at (0, 32).
+    //   anchor: new google.maps.Point(0, 32),
+    //   opcaity:0
+    // };
+  //  let p=google.maps.SymbolPath.CIRCLE
+
     let marker = new google.maps.Marker({
       position: latLng,
-      map: map
+      map: map,
+      // icon:{url:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+      // size: new google.maps.Size(100, 100)}
+      }
+      )
+      marker.setOptions({'opacity': 0})
+
+   let infowindow = new google.maps.InfoWindow({
+      content: 'Location: '+content +"\n"+' Magnitude: '+mag+"\n"+ 'Date: '+d
     });
 
-    let infowindow = new google.maps.InfoWindow({
-      content: 'Location: '+content +'\n' +' Magnitude: '+mag
+    // marker.addListener('click', function() {
+    //   infowindow.open(map, marker);
+    
+    // });
+    
+    // closeInfoWindow = function() {
+    //   infowindow.close();
+    // };
+    marker.open=false;
+
+    google.maps.event.addListener(marker, 'click', function() {
+      if(!marker.open){
+          infowindow.open(map,marker);
+          marker.open = true;
+      }
+      else{
+          infowindow.close();
+          marker.open = false;
+      }
     });
 
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
+
   }
 }
 
