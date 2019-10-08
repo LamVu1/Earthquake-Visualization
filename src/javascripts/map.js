@@ -304,7 +304,7 @@ export const initMap=function(data) {
   };
 
   var markerCluster = new MarkerClusterer(map, markers,
-    {imagePath: '/home/lam/Desktop/Earthquake/src/assets/m'});
+    {imagePath: './src/assets/m'});
 }
 
       
