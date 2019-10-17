@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEventsDate", function() { return getEventsDate; });
 
 const getEvents = () => {
-    let url='https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=32.399&maxlatitude=42.294&minlongitude=-124.321&maxlongitude=-114.258&minmagnitude=2';
+    let url='https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=32.399&maxlatitude=42.294&minlongitude=-124.321&maxlongitude=-114.258&minmagnitude=5';
     return(
     fetch(url)
     .then((response)=>response.json()));
@@ -192,14 +192,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    Object(_api__WEBPACK_IMPORTED_MODULE_0__["getEvents"])().then((data)=>Object(_map__WEBPACK_IMPORTED_MODULE_1__["initMap"])(data));
-    const form = document.getElementById('filter');
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        Object(_form__WEBPACK_IMPORTED_MODULE_3__["filter"])().then((data)=>Object(_map__WEBPACK_IMPORTED_MODULE_1__["initMap"])(data))
+    // getEvents().then((data)=>initMap(data));
+    // const form = document.getElementById('filter');
+    // form.addEventListener('submit',(e)=>{
+    //     e.preventDefault();
+    //     filter().then((data)=>initMap(data))
     
-    })
-
+    // })
+    // initMap();
 
     // getEvents().then((data)=>initMap(data))
 })
@@ -471,8 +471,9 @@ const initMap=function(data) {
     var latLng = new google.maps.LatLng(coords[1],coords[0]);
     let content = data.features[i].properties.place
     let mag=data.features[i].properties.mag
-    const low = [90, 100, 69]; 
-    const high = [5, 69, 54]; 
+    const low = [118,100,44]
+    // [90, 100, 69]; 
+    const high = [5, 100, 49]; 
     const minMag = 2;
     const maxMag = 6.0;
     let d = new Date(data.features[i].properties.time);
@@ -489,25 +490,25 @@ const initMap=function(data) {
 
     let circle=new google.maps.Circle({
       strokeColor: '#ffffff',
-        strokeOpacity: .3,
+        strokeOpacity: .8,
         strokeWeight: 1,
         fillColor: color,
-        fillOpacity: 1,
+        fillOpacity: (1-mag/10),
         map: map,
         center: latLng,
-        radius: Math.pow(10,mag)
+        radius: mag*10000
     })
 
-    // var image = {
-    //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    //   // This marker is 20 pixels wide by 32 pixels high.
-    //   size: new google.maps.Size(20, 32),
-    //   // The origin for this image is (0, 0).
-    //   origin: new google.maps.Point(0, 0),
-    //   // The anchor for this image is the base of the flagpole at (0, 32).
-    //   anchor: new google.maps.Point(0, 32),
-    //   opcaity:0
-    // };
+  //   var image = {
+  //     url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+  //     // This marker is 20 pixels wide by 32 pixels high.
+  //     size: new google.maps.Size(20, 32),
+  //     // The origin for this image is (0, 0).
+  //     origin: new google.maps.Point(0, 0),
+  //     // The anchor for this image is the base of the flagpole at (0, 32).
+  //     anchor: new google.maps.Point(0, 32),
+  //     opcaity:0
+  //   };
   //  let p=google.maps.SymbolPath.CIRCLE
 
     let marker = new google.maps.Marker({
@@ -551,7 +552,7 @@ const initMap=function(data) {
   };
 
   var markerCluster = new MarkerClusterer(map, markers,
-    {imagePath: './src/assets/m'});
+    {imagePath: './src/assets/m', maxZoom: 7});
 }
 
       
@@ -567,18 +568,45 @@ const initMap=function(data) {
 
 
 
-// const heatmapData=[];
+// // const heatmapData=[];
       
-      // heatmapData.push({location: latLng, weight:Math.pow(2,mag)});
-      // var marker = new google.maps.Marker({
-      //   position: latLng,
-      //   map: map,
-      // icon: icon});
-    // var heatmap = new google.maps.visualization.HeatmapLayer({
-    //   data: heatmapData,
-    //   dissipating: false,
-    //   map: map
-    // })
+//       // heatmapData.push({location: latLng, weight:Math.pow(2,mag)});
+//       // var marker = new google.maps.Marker({
+//       //   position: latLng,
+//       //   map: map,
+//       // icon: icon});
+//     // var heatmap = new google.maps.visualization.HeatmapLayer({
+//     //   data: heatmapData,
+//     //   dissipating: false,
+//     //   map: map
+//     // })
+
+
+// export const initMap=function() {
+  
+//   var svg = d3.select("svg");
+
+// var path = d3.geoPath();
+
+// d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+//   if (error) throw error;
+
+//   svg.append("g")
+//       .attr("class", "states")
+//     .selectAll("path")
+//     .data(topojson.feature(us, us.objects.states).features)
+//     .enter().append("path")
+//       .attr("d", path);
+
+//   svg.append("path")
+//       // .attr("class", "state-borders")
+//       .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+// });
+  
+
+
+// }
+
 
 /***/ }),
 

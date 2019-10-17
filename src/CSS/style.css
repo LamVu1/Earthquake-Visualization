@@ -164,10 +164,13 @@ button:hover{
 }
 
 #Title-Container{
-  background-color: #00A8A8;
+  background-image: linear-gradient(to right, rgb(0, 255, 255), rgb(13, 121, 131));
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: red;
   font-size: 50px;
   color: white;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
   letter-spacing: -0.04em;
   font-weight: bolder;
   padding: 50px 50px 10px 50px;
@@ -188,3 +191,6 @@ button:hover{
   
 }
 
+#my_dataviz{
+  border: red solid;
+}
