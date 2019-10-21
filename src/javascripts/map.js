@@ -1,6 +1,6 @@
 import {style} from './mapstyle'
 import { O_DIRECT } from 'constants';
-
+import {Chart} from 'chart.js';
 
 export const initMap=function(data) {
   
@@ -35,13 +35,16 @@ export const initMap=function(data) {
   let markers=[];
   let heatmapData=[];
   let circles=[];
+  let dates=[];
+  let mags=[];
+  let bymonths=[];
 
   for(let i=0; i<data.features.length;i++){
     let coords = data.features[i].geometry.coordinates;
     let latLng = new google.maps.LatLng(coords[1],coords[0]);
     let content = data.features[i].properties.place
     let mag=data.features[i].properties.mag
-
+      mags.push(mag)
       heatmapData.push({location:latLng, weight: mag});
       
 
@@ -52,7 +55,9 @@ export const initMap=function(data) {
     const frac = mag/(maxMag-minMag)
 
     let d = new Date(data.features[i].properties.time);     
-     
+     dates.push(d)
+     let bymonth = new Date(data.features[i].properties.time).getMonth()+1;
+     bymonths.push(bymonth)
     function HSL(low,high,frac)
     {
       let colors=[];
@@ -213,8 +218,90 @@ export const initMap=function(data) {
         }
     })
 
+//   let maxDate = dates[0]
+//   let minDate = dates[dates.length-1];
+//  console.log(minDate);
+//  console.log(maxDate);
+let count={};
+for(let i=0;i<bymonths.length;i++){
+  if(bymonths[i] in count){
+    // count[bymonths[i]]=0;
+    count[bymonths[i]]+=1;
+  }else{
+    count[bymonths[i]]=1;
+  }
+}
+console.log(bymonths)
+console.log(count)
+ var ctx = document.getElementById('myLineGraph').getContext('2d');
+ var ctx2 = document.getElementById('myChart').getContext('2d');
+
+// let zip = [];
+// for(let i=dates.length-1;i>=0;i--){
+//   zip.push({x: dates[i], y:mags[i]})
+// }
+// console.log(zip)
+
+ var myLineChart= new Chart(ctx, {
+  type: 'line',
+  data: {labels: dates.reverse(), datasets:[{label:'Earthquakes',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
+  options: {
+    responsive: false,
+      scales: {xAxes: [{
+        type: 'time',
+        time: {
+            unit: 'day'
+        }
+    }],
+    yAxes: [{
+              ticks: {
+                  beginAtZero: true
+              },
+              scaleLabel:{
+                display:true,
+                labelString:'Magnitude'
+              }
+          }],
+        //   xAxes: [{
+        //     scaleLabel:{
+        //       labelString:'Dates'
+        //     }
+        // }]
+  }}
+});
+
+let c=[];
+for(let key in count){
+  c.push({x:key, y:count[key]})
+}
+
+let barcolor =[]
+for(let i=0; i<Object.keys(count).length; i++){
+
+}
+// console.log(Object.values(count));
+let myChart = new Chart(ctx2,{
+  type:'bar',
+  data: {labels: Object.keys(count),datasets:[{label:'count',data:Object.values(count),borderWidth: 1,backgroundColor:[	'rgba(255, 0, 0,0.5)','rgba(51, 0, 0,0.5)']
+}]},
+  options: {
+    responsive: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+            beginAtZero: true
+        },
+        scaleLabel:{
+          display:true,
+          labelString:'Counts'
+        }
+    }]
+    }
+}
   
- 
+})
+
+
 }
 
 
