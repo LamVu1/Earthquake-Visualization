@@ -32467,6 +32467,7 @@ const getEventsDate=(start, end, min, max)=>{
     loader.append('loading');
     const map=document.getElementById('map')
     map.innerHTML='loading'
+    console.log(url)
     return(
         fetch(url)
         .then((response)=>{
@@ -32475,7 +32476,6 @@ const getEventsDate=(start, end, min, max)=>{
 
         })
         );
-
 }
 
 /***/ }),
@@ -32530,16 +32530,12 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', () => {
     Object(_api__WEBPACK_IMPORTED_MODULE_0__["getEvents"])().then((data)=>Object(_map__WEBPACK_IMPORTED_MODULE_1__["initMap"])(data));
-    // const form = document.getElementById('filter');
-    // form.addEventListener('submit',(e)=>{
-    //     e.preventDefault();
-    //     filter().then((data)=>initMap(data))
-    
-    // })
-    // initMap();
-
-    // getEvents().then((data)=>initMap(data))
-
+    const form = document.getElementById('filter');
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        
+        Object(_form__WEBPACK_IMPORTED_MODULE_2__["filter"])().then((data)=>Object(_map__WEBPACK_IMPORTED_MODULE_1__["initMap"])(data))
+    })
     
 })
 
@@ -32598,7 +32594,7 @@ const initMap=function(data) {
   const map = new google.maps.Map(document.getElementById('map'),
     {
       center: { lat: 36.778, lng: -119.417 },
-      zoom: 7,
+      zoom: 6,
       styles: _mapstyle__WEBPACK_IMPORTED_MODULE_0__["style"],
       gestureHandling: 'greedy',
       mapTypeId: 'terrain'
@@ -32648,7 +32644,11 @@ const initMap=function(data) {
     let d = new Date(data.features[i].properties.time);     
      dates.push(d)
      let bymonth = new Date(data.features[i].properties.time).getMonth()+1;
-     bymonths.push(bymonth)
+     if(bymonth<10){
+      bymonth='0'+bymonth
+     }
+     let byyear =new Date(data.features[i].properties.time).getFullYear()+1;
+     bymonths.push(bymonth+'-'+byyear)
     function HSL(low,high,frac)
     {
       let colors=[];
@@ -32809,10 +32809,7 @@ const initMap=function(data) {
         }
     })
 
-//   let maxDate = dates[0]
-//   let minDate = dates[dates.length-1];
-//  console.log(minDate);
-//  console.log(maxDate);
+  
 let count={};
 for(let i=0;i<bymonths.length;i++){
   if(bymonths[i] in count){
@@ -32822,8 +32819,7 @@ for(let i=0;i<bymonths.length;i++){
     count[bymonths[i]]=1;
   }
 }
-console.log(bymonths)
-console.log(count)
+
  var ctx = document.getElementById('myLineGraph').getContext('2d');
  var ctx2 = document.getElementById('myChart').getContext('2d');
 
@@ -32861,19 +32857,19 @@ console.log(count)
   }}
 });
 
-let c=[];
-for(let key in count){
-  c.push({x:key, y:count[key]})
-}
 
 let barcolor =[]
-for(let i=0; i<Object.keys(count).length; i++){
+let countlen=Object.keys(count).length
 
+for(let i=0; i<countlen; i++){
+  let r=244;
+  barcolor.push('rgba('+r+','+0+','+0+','+(i+1)/countlen+')')
 }
-// console.log(Object.values(count));
+
+
 let myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx2,{
   type:'bar',
-  data: {labels: Object.keys(count),datasets:[{label:'count',data:Object.values(count),borderWidth: 1,backgroundColor:[	'rgba(255, 0, 0,0.5)','rgba(51, 0, 0,0.5)']
+  data: {labels: Object.keys(count).reverse(),datasets:[{label:'count',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
 }]},
   options: {
     responsive: false,
@@ -32890,6 +32886,12 @@ let myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx2,{
     }
 }
   
+})
+
+const form = document.getElementById('filter');
+form.addEventListener('submit',(e)=>{
+  myLineChart.destroy();
+  myChart.destroy();
 })
 
 
