@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBiOpIB-yeuF9pNIl4nFThwxLewJP5r4KE&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBiOpIB-yeuF9pNIl4nFThwxLewJP5r4KE&callback=initMap&libraries=visualization"
   type="text/javascript"></script>
     <script type="text/javascript" src="./bundle.js"></script>
     <script type="text/javascript" src="./src/javascripts/markerclusterer.js"></script>
@@ -16,16 +16,23 @@
 
 
 
+
+
     <link rel="stylesheet" href="./src/CSS/style.css">
     <title>Earthquake Visualizer</title>
     
 </head>
 <body>
     <div id="Title-Container">Earthquake Visualizer</div>
-    <!-- <svg id="my_dataviz" width="630" height="350"></svg> -->
+   
     <div id="Main-Container">
-            <!-- <svg id="my_dataviz" width="630" height="350"></svg> -->
         <div id="map"></div>
+        <div id="Toggles">
+            <input class='selected' id="ToggleCircle" type="button" value="Magnitude">
+            <input class='unselected' id="ToggleHeatMap" type=button value="Heat Map">
+            <input class='selected' id="ToggleCluster" type=button value="Cluster">
+            <input class='selected' id="ToggleMarkers" type=button value="Markers">
+        </div>
         <div id="Instructions-Container">
             <p id="Instructions">Instructions:</p>
             <p id="Instructions-Steps">Filter earthquake events on the map by <b>Start Date</b>  and <b>End Date</b>. If no specified <b>End Date</b> then <b>End Date</b> is set to current date. If State Date and End Date are left <b>blank</b> then all records of earthquake events will be shown.</p>
@@ -51,9 +58,6 @@
             </div>
             <p id="Map-Info">Clicking on marker cluster will zoom in and expand markers. Clicking a marker will show information window. Information window will include Location, Date, and Magnitude of event.</p>
         </div>
-        
-   
     </div>
-    
 </body>
 </html>
