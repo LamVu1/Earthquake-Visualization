@@ -105,7 +105,7 @@ div {
 } 
 
 button {
-  background-color: #4CAF50; /* Green */
+  background-color: rgb(54, 224, 60); /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -118,12 +118,12 @@ button {
 }
 
 button:hover{
-  background-color: rgb(54, 224, 60);
+  background-color: rgb(63, 241, 69);
 }
 
 #map {
     width: 70%;
-    height:75%;
+    height:100%;
 
   }
 #Instructions-Container{
@@ -177,9 +177,26 @@ button:hover{
   -webkit-text-stroke-color: black; */
   letter-spacing: -0.04em;
   font-weight: bolder;
-  padding: 50px 50px 10px 50px;
+  /* padding: 50px 50px 10px 50px; */
   display: flex;
+  flex-direction: column;
+  height: 120px;
   justify-content: center;
+}
+
+#Title-Wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+h1{
+  padding-top: 6px;
+}
+#logo{
+  height: 70px;
+  width: 70px;
+  margin-right: 5px;
+  padding-bottom: 10px;
 }
 
 #Filter-Container{
@@ -221,10 +238,17 @@ button:hover{
   margin-top: 5px;
 }
 .selected{
-  background-color: rgb(40, 238, 40);
+  background-color: rgb(54, 224, 60);
+}
+
+.selected:hover{
+  background-color: rgb(63, 241, 69);
 }
   
 .unselected{
+  background-color: rgb(161, 153, 153);
+}
+.unselected:hover{
   background-color: rgb(161, 153, 153);
 }
 

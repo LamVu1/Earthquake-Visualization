@@ -29,6 +29,7 @@ export const getEventsDate=(start, end, min, max)=>{
     loader.append('loading');
     const map=document.getElementById('map')
     map.innerHTML='loading'
+    console.log(url)
     return(
         fetch(url)
         .then((response)=>{
@@ -37,5 +38,4 @@ export const getEventsDate=(start, end, min, max)=>{
 
         })
         );
-
 }
