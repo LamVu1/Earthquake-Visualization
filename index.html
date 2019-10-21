@@ -34,43 +34,53 @@
    
     <div id="Main-Container">
         <div id="Top-Container">
-            <div id="map"></div>
-            <div id="Toggles">
-                <input title="Displays magnitude of events according to circle size" class='selected' id="ToggleCircle" type="button" value="Magnitude">
-                <input title="Displays distribution of events" class='unselected' id="ToggleHeatMap" type=button value="Heat Map">
-                <input title="Toggles clustering/grouping of events"class='selected' id="ToggleCluster" type=button value="Cluster">
-                <input title="Toggles markers and information of events"class='selected' id="ToggleMarkers" type=button value="Markers">
+            <div id="TogglesMap-Container">
+                <div id="Toggles-Container">
+                    <div id="Toggles">
+                        <input title="Displays magnitude of events according to circle size" class='selected' id="ToggleCircle" type="button" value="Magnitude">
+                        <input title="Displays distribution of events" class='unselected' id="ToggleHeatMap" type=button value="Heat Map">
+                        <input title="Toggles clustering/grouping of events"class='selected' id="ToggleCluster" type=button value="Cluster">
+                        <input title="Toggles markers and information of events"class='selected' id="ToggleMarkers" type=button value="Markers">
+                    </div>
+                </div>
+                <div id="Map-Container">
+                    <div id="map"></div>
+                </div>
             </div>
+            <div id="Left-Container">
             <div id="Instructions-Container">
                 <p id="Instructions">Instructions:</p>
                 <p id="Instructions-Steps">Filter earthquake events on the map by <b>Start Date</b>  and <b>End Date</b>. If no specified <b>End Date</b> then <b>End Date</b> is set to current date. If State Date and End Date are left <b>blank</b> then all records of earthquake events in the past month will be shown.</p>
-                <div id="Filter-Container">
-                    <form id="filter">
-                        <label>Start Date:
-                            <input type="date" id="lower">
-                        </label>
-                        <label>
-                            End Date:
-                            <input type="date" id="higher">
-                        </label>
-                        <label>
-                            Max Magnitude:
-                            <input type="text" id="max-mag">
-                        </label>
-                        <label>
-                            Min Magnitude:
-                            <input type="text" id="min-mag">
-                        </label>
-                        <button type="submit" value="Filter" id="filter-btn">Filter</button>
-                    </form>    
+                
+                    <div id="Filter-Container">
+                        <form id="filter">
+                            <label>Start Date:
+                                <input type="date" id="lower">
+                            </label>
+                            <label>
+                                End Date:
+                                <input type="date" id="higher">
+                            </label>
+                            <label>
+                                Max Magnitude:
+                                <input type="text" id="max-mag">
+                            </label>
+                            <label>
+                                Min Magnitude:
+                                <input type="text" id="min-mag">
+                            </label>
+                            <button type="submit" value="Filter" id="filter-btn">Filter</button>
+                        </form>    
+                    </div>
+                    <p id="Map-Info">Clicking on marker cluster will zoom in and expand markers. Clicking a marker will show information window. Information window will include Location, Date, and Magnitude of event.</p>
                 </div>
-                <p id="Map-Info">Clicking on marker cluster will zoom in and expand markers. Clicking a marker will show information window. Information window will include Location, Date, and Magnitude of event.</p>
-            </div>
+                <div id="total-count"></div>
+                </div>
+            
         </div>
         <div id="Bottom-Container">
             <canvas id="myLineGraph" width="900" height="600"></canvas>
             <canvas id="myChart" width="900" height="600"></canvas>
-
         </div>
     </div>
 </body>

@@ -244,8 +244,12 @@ for(let i=0;i<bymonths.length;i++){
 
  var myLineChart= new Chart(ctx, {
   type: 'line',
-  data: {labels: dates.reverse(), datasets:[{label:'Earthquakes',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
+  data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
   options: {
+    title:{
+      display:true,
+      text:'Line Plot of Earthquakes by Magnitude'
+    },
     responsive: false,
       scales: {xAxes: [{
         type: 'time',
@@ -278,14 +282,19 @@ for(let i=0; i<countlen; i++){
   let r=244;
   barcolor.push('rgba('+r+','+0+','+0+','+(i+1)/countlen+')')
 }
+let eventCounts=data.features.length;
 
 
 let myChart = new Chart(ctx2,{
   type:'bar',
-  data: {labels: Object.keys(count).reverse(),datasets:[{label:'count',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
+  data: {labels: Object.keys(count).reverse(),datasets:[{label:'Earthquake Counts',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
 }]},
   options: {
     responsive: false,
+    title:{
+      display:true,
+      text:'Bar Chart of Earthquake Counts by Month'
+    },
     scales: {
       yAxes: [{
         ticks: {
@@ -300,11 +309,14 @@ let myChart = new Chart(ctx2,{
 }
   
 })
+const eventCountsDiv=document.getElementById('total-count');
+eventCountsDiv.innerHTML='Total Earthquake Count: '+eventCounts
 
 const form = document.getElementById('filter');
 form.addEventListener('submit',(e)=>{
   myLineChart.destroy();
   myChart.destroy();
+  eventCountsDiv.innerHTML='';
 })
 
 
