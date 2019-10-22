@@ -306,3 +306,46 @@ h1{
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+
+
+
+#loader {
+  position:absolute;
+  width: 100px;
+  height: 100px;
+  margin: 1px;
+  border-radius: 50%;
+  left: 50%;
+  top:40%;
+  z-index: 1;
+  border: 5px solid #fff;
+  border-color: rgb(113, 231, 119) transparent rgb(113, 231, 119)  transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+.hidden {
+  display: none;
+}
+
+
+.shown {
+  display: block;
+}
