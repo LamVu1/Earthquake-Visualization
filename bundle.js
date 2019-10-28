@@ -32611,7 +32611,7 @@ const initMap=function(data) {
   const map = new google.maps.Map(document.getElementById('map'),
     {
       center: { lat: 36.778, lng: -119.417 },
-      zoom: 6,
+      zoom: 7,
       styles: _mapstyle__WEBPACK_IMPORTED_MODULE_0__["style"],
       gestureHandling: 'greedy',
       mapTypeId: 'terrain'
@@ -32850,12 +32850,25 @@ for(let i=0;i<bymonths.length;i++){
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
   options: {
+    tooltips:{titleFontSize: 18,
+      bodyFontSize: 16,},
+
     title:{
       display:true,
-      text:'Line Plot of Earthquakes by Magnitude'
+      text:'Line Plot of Earthquakes by Magnitude',
+        fontSize: 20
     },
     responsive: false,
       scales: {xAxes: [{
+        ticks: {
+            
+          fontSize: 20
+      },
+        scaleLabel:{
+          display:true,
+          labelString:'Dates',
+          fontSize: 20
+        },
         type: 'time',
         time: {
             unit: 'day'
@@ -32863,18 +32876,16 @@ for(let i=0;i<bymonths.length;i++){
     }],
     yAxes: [{
               ticks: {
-                  beginAtZero: true
+                  beginAtZero: true,
+                  fontSize: 20
               },
               scaleLabel:{
                 display:true,
-                labelString:'Magnitude'
+                labelString:'Magnitude',
+                fontSize: 20
+                
               }
-          }],
-        //   xAxes: [{
-        //     scaleLabel:{
-        //       labelString:'Dates'
-        //     }
-        // }]
+          }],   
   }}
 });
 
@@ -32894,19 +32905,35 @@ let myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx2,{
   data: {labels: Object.keys(count).reverse(),datasets:[{label:'Earthquake Counts',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
 }]},
   options: {
+    tooltips:{titleFontSize: 18,
+      bodyFontSize: 16,},
     responsive: false,
     title:{
       display:true,
-      text:'Bar Chart of Earthquake Counts by Month'
+      text:'Bar Chart of Earthquake Counts by Month',
+      fontSize: 20
     },
     scales: {
+      xAxes: [{
+        scaleLabel:{
+          display:true,
+          labelString:'Months',
+          fontSize: 20  
+        },
+          ticks: {
+            
+              fontSize: 20
+          }
+      }],
       yAxes: [{
         ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            fontSize: 20
         },
         scaleLabel:{
           display:true,
-          labelString:'Counts'
+          labelString:'Counts',
+          fontSize: 20
         }
     }]
     }
