@@ -308,7 +308,8 @@ h1{
 
 #Bottom-Container{
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  margin-top: 70px;
   flex-direction: row;
   justify-content: space-evenly;
   background-color:  #D6DFE0;
