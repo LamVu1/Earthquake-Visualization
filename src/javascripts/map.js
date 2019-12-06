@@ -9,8 +9,7 @@ export const initMap=function(data) {
       center: { lat: 36.778, lng: -119.417 },
       zoom: 7,
       styles: style,
-      gestureHandling: 'greedy',
-      mapTypeId: 'terrain'
+      gestureHandling: 'greedy'
     }
   );
 
@@ -62,6 +61,7 @@ export const initMap=function(data) {
      }
      let byyear =new Date(data.features[i].properties.time).getFullYear()+1;
      bymonths.push(bymonth+'-'+byyear)
+     
     function HSL(low,high,frac)
     {
       let colors=[];
@@ -163,18 +163,12 @@ export const initMap=function(data) {
     })
 
   var markerCluster = new MarkerClusterer( map, markers,
-    {imagePath: './src/assets/m', maxZoom: 7}
-  );
-
-    // function setMapOnCluster(themap)
-    // {
-    //  markerCluster.set(map,themap)
-    // }
-
+    {imagePath: './src/assets/m', maxZoom: 7})
+  
     MarkerClusterer.prototype.hide = function() {
     this.setMap(null);
     this.resetViewport();
-  };
+    };
   
   MarkerClusterer.prototype.show = function() {
     this.setMap(map); // replace map with your reference to the map object
@@ -201,7 +195,6 @@ export const initMap=function(data) {
   var heatmap = new google.maps.visualization.HeatmapLayer(
     {
       data: heatmapData,
-      // dissipating: false,
       radius: 50,
     })
   
@@ -242,50 +235,80 @@ for(let i=0;i<bymonths.length;i++){
 // }
 // console.log(zip)
 
+
+// Chart.defaults.global.defaultFontColor='red';
+
  var myLineChart= new Chart(ctx, {
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
-  options: {
-    tooltips:{titleFontSize: 18,
-      bodyFontSize: 16,},
-
-    title:{
-      display:true,
-      text:'Line Plot of Earthquakes by Magnitude',
-        fontSize: 20
-    },
-    responsive: false,
-      scales: {xAxes: [{
-        ticks: {
-            
-          fontSize: 20
-      },
-        scaleLabel:{
+  options: 
+    { 
+      legend: {
+      labels: {
+          fontColor: 'white' //set your desired color
+      }},
+      tooltips:
+        {mode: 'index',
+          titleFontSize: 18,
+          bodyFontSize: 16,
+          intersect: false
+        },
+    
+      title:
+        {
           display:true,
-          labelString:'Dates',
+          text:'Line Plot of Earthquakes by Magnitude',
+          fontColor: 'white',
           fontSize: 20
         },
-        type: 'time',
-        time: {
-            unit: 'day'
-        }
-    }],
-    yAxes: [{
-              ticks: {
-                  beginAtZero: true,
+      responsive: false,
+      scales: 
+        {
+          xAxes: [
+            {display: true,
+              ticks: 
+                {
+                fontSize: 20,
+                fontColor: 'white'
+                },
+              scaleLabel:
+                {
+                  display:true,
+                  fontColor: 'white',
+                  labelString:'Dates',
                   fontSize: 20
-              },
-              scaleLabel:{
-                display:true,
-                labelString:'Magnitude',
-                fontSize: 20
+                },
+              type: 'time',
+              time: 
+                {
+                   unit: 'day'
+                },
                 
-              }
-          }],   
-  }}
-});
-
-
+              }],
+          yAxes: [
+            {
+              ticks: 
+                {
+                  beginAtZero: true,
+                  fontSize: 20,
+                  fontColor: 'white'
+                },
+              scaleLabel:
+                {
+                  display:true,
+                  labelString:'Magnitude',
+                  fontSize: 20,  
+                  fontColor: 'white'              
+                },
+                
+              
+             }],
+           
+              
+        }
+    }}
+  );
+ 
 let barcolor =[]
 let countlen=Object.keys(count).length
 
@@ -298,41 +321,71 @@ let eventCounts=data.features.length;
 
 let myChart = new Chart(ctx2,{
   type:'bar',
-  data: {labels: Object.keys(count).reverse(),datasets:[{label:'Earthquake Counts',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
-}]},
-  options: {
-    tooltips:{titleFontSize: 18,
-      bodyFontSize: 16,},
-    responsive: false,
-    title:{
-      display:true,
-      text:'Bar Chart of Earthquake Counts by Month',
-      fontSize: 20
+  data: 
+    {
+      labels: Object.keys(count).reverse(),
+      datasets:[
+        {
+          label:'Earthquake Counts',
+          data:Object.values(count).reverse(),
+          borderWidth: 1,
+          backgroundColor:barcolor
+        }]
     },
-    scales: {
-      xAxes: [{
-        scaleLabel:{
-          display:true,
-          labelString:'Months',
-          fontSize: 20  
-        },
-          ticks: {
-            
-              fontSize: 20
-          }
-      }],
-      yAxes: [{
-        ticks: {
-            beginAtZero: true,
-            fontSize: 20
-        },
-        scaleLabel:{
-          display:true,
-          labelString:'Counts',
-          fontSize: 20
-        }
-    }]
-    }
+  options: {
+    legend: {
+      labels: {
+          fontColor: 'white' //set your desired color
+      }
+  },
+    tooltips:
+      {
+        titleFontSize: 18,
+        bodyFontSize: 16,
+        intersect: false
+      },
+    responsive: false,
+    title:
+      {
+        display:true,
+        text:'Bar Chart of Earthquake Counts by Month',
+        fontSize: 20,
+        fontColor: 'white'
+      },
+    scales: 
+      {
+        xAxes: [
+          { 
+            scaleLabel:
+              {
+                display:true,
+                labelString:'Months',
+                fontSize: 20,
+                fontColor: 'white'
+              },
+            ticks:
+              {
+                fontSize: 20,
+                fontColor: 'white'
+              }
+          }],
+        yAxes: [
+          {
+            ticks: 
+              {
+                beginAtZero: true,
+                fontSize: 20,
+                fontColor: 'white'
+              },
+            scaleLabel:
+              {
+                display:true,
+                labelString:'Counts',
+                fontSize: 20,
+                fontColor: 'white'
+              }
+          }]
+      }
 }
   
 })

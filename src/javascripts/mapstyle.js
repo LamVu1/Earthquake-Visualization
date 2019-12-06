@@ -1,5 +1,6 @@
 
 export const style = [
+  
     {
       "elementType": "geometry",
       "stylers": [
@@ -105,6 +106,14 @@ export const style = [
     },
     {
       "featureType": "road",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
       "elementType": "geometry.fill",
       "stylers": [
         {
@@ -168,21 +177,10 @@ export const style = [
     },
     {
       "featureType": "water",
-      "stylers": [
-        {
-          "visibility": "on"
-        }
-      ]
-    },
-    {
-      "featureType": "water",
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#9cdfda"
-        },
-        {
-          "visibility": "on"
+          "color": "#000000"
         }
       ]
     },
@@ -191,11 +189,11 @@ export const style = [
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#9e9e9e"
+          "color": "#3d3d3d"
         }
       ]
     }
-    
+  ]
   
     
-  ]
+  

@@ -32613,8 +32613,7 @@ const initMap=function(data) {
       center: { lat: 36.778, lng: -119.417 },
       zoom: 7,
       styles: _mapstyle__WEBPACK_IMPORTED_MODULE_0__["style"],
-      gestureHandling: 'greedy',
-      mapTypeId: 'terrain'
+      gestureHandling: 'greedy'
     }
   );
 
@@ -32767,18 +32766,12 @@ const initMap=function(data) {
     })
 
   var markerCluster = new MarkerClusterer( map, markers,
-    {imagePath: './src/assets/m', maxZoom: 7}
-  );
-
-    // function setMapOnCluster(themap)
-    // {
-    //  markerCluster.set(map,themap)
-    // }
-
+    {imagePath: './src/assets/m', maxZoom: 7})
+  
     MarkerClusterer.prototype.hide = function() {
     this.setMap(null);
     this.resetViewport();
-  };
+    };
   
   MarkerClusterer.prototype.show = function() {
     this.setMap(map); // replace map with your reference to the map object
@@ -32846,50 +32839,80 @@ for(let i=0;i<bymonths.length;i++){
 // }
 // console.log(zip)
 
+
+// Chart.defaults.global.defaultFontColor='red';
+
  var myLineChart= new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx, {
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
-  options: {
-    tooltips:{titleFontSize: 18,
-      bodyFontSize: 16,},
-
-    title:{
-      display:true,
-      text:'Line Plot of Earthquakes by Magnitude',
-        fontSize: 20
-    },
-    responsive: false,
-      scales: {xAxes: [{
-        ticks: {
-            
-          fontSize: 20
-      },
-        scaleLabel:{
+  options: 
+    { 
+      legend: {
+      labels: {
+          fontColor: 'white' //set your desired color
+      }},
+      tooltips:
+        {mode: 'index',
+          titleFontSize: 18,
+          bodyFontSize: 16,
+          intersect: false
+        },
+    
+      title:
+        {
           display:true,
-          labelString:'Dates',
+          text:'Line Plot of Earthquakes by Magnitude',
+          fontColor: 'white',
           fontSize: 20
         },
-        type: 'time',
-        time: {
-            unit: 'day'
-        }
-    }],
-    yAxes: [{
-              ticks: {
-                  beginAtZero: true,
+      responsive: false,
+      scales: 
+        {
+          xAxes: [
+            {display: true,
+              ticks: 
+                {
+                fontSize: 20,
+                fontColor: 'white'
+                },
+              scaleLabel:
+                {
+                  display:true,
+                  fontColor: 'white',
+                  labelString:'Dates',
                   fontSize: 20
-              },
-              scaleLabel:{
-                display:true,
-                labelString:'Magnitude',
-                fontSize: 20
+                },
+              type: 'time',
+              time: 
+                {
+                   unit: 'day'
+                },
                 
-              }
-          }],   
-  }}
-});
-
-
+              }],
+          yAxes: [
+            {
+              ticks: 
+                {
+                  beginAtZero: true,
+                  fontSize: 20,
+                  fontColor: 'white'
+                },
+              scaleLabel:
+                {
+                  display:true,
+                  labelString:'Magnitude',
+                  fontSize: 20,  
+                  fontColor: 'white'              
+                },
+                
+              
+             }],
+           
+              
+        }
+    }}
+  );
+ 
 let barcolor =[]
 let countlen=Object.keys(count).length
 
@@ -32902,41 +32925,71 @@ let eventCounts=data.features.length;
 
 let myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx2,{
   type:'bar',
-  data: {labels: Object.keys(count).reverse(),datasets:[{label:'Earthquake Counts',data:Object.values(count).reverse(),borderWidth: 1,backgroundColor:barcolor
-}]},
-  options: {
-    tooltips:{titleFontSize: 18,
-      bodyFontSize: 16,},
-    responsive: false,
-    title:{
-      display:true,
-      text:'Bar Chart of Earthquake Counts by Month',
-      fontSize: 20
+  data: 
+    {
+      labels: Object.keys(count).reverse(),
+      datasets:[
+        {
+          label:'Earthquake Counts',
+          data:Object.values(count).reverse(),
+          borderWidth: 1,
+          backgroundColor:barcolor
+        }]
     },
-    scales: {
-      xAxes: [{
-        scaleLabel:{
-          display:true,
-          labelString:'Months',
-          fontSize: 20  
-        },
-          ticks: {
-            
-              fontSize: 20
-          }
-      }],
-      yAxes: [{
-        ticks: {
-            beginAtZero: true,
-            fontSize: 20
-        },
-        scaleLabel:{
-          display:true,
-          labelString:'Counts',
-          fontSize: 20
-        }
-    }]
-    }
+  options: {
+    legend: {
+      labels: {
+          fontColor: 'white' //set your desired color
+      }
+  },
+    tooltips:
+      {
+        titleFontSize: 18,
+        bodyFontSize: 16,
+        intersect: false
+      },
+    responsive: false,
+    title:
+      {
+        display:true,
+        text:'Bar Chart of Earthquake Counts by Month',
+        fontSize: 20,
+        fontColor: 'white'
+      },
+    scales: 
+      {
+        xAxes: [
+          { 
+            scaleLabel:
+              {
+                display:true,
+                labelString:'Months',
+                fontSize: 20,
+                fontColor: 'white'
+              },
+            ticks:
+              {
+                fontSize: 20,
+                fontColor: 'white'
+              }
+          }],
+        yAxes: [
+          {
+            ticks: 
+              {
+                beginAtZero: true,
+                fontSize: 20,
+                fontColor: 'white'
+              },
+            scaleLabel:
+              {
+                display:true,
+                labelString:'Counts',
+                fontSize: 20,
+                fontColor: 'white'
+              }
+          }]
+      }
 }
   
 })
@@ -33033,6 +33086,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "style", function() { return style; });
 
 const style = [
+  
     {
       "elementType": "geometry",
       "stylers": [
@@ -33138,6 +33192,14 @@ const style = [
     },
     {
       "featureType": "road",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
       "elementType": "geometry.fill",
       "stylers": [
         {
@@ -33201,21 +33263,10 @@ const style = [
     },
     {
       "featureType": "water",
-      "stylers": [
-        {
-          "visibility": "on"
-        }
-      ]
-    },
-    {
-      "featureType": "water",
       "elementType": "geometry",
       "stylers": [
         {
-          "color": "#9cdfda"
-        },
-        {
-          "visibility": "on"
+          "color": "#000000"
         }
       ]
     },
@@ -33224,14 +33275,14 @@ const style = [
       "elementType": "labels.text.fill",
       "stylers": [
         {
-          "color": "#9e9e9e"
+          "color": "#3d3d3d"
         }
       ]
     }
-    
+  ]
   
     
-  ]
+  
 
 /***/ })
 
