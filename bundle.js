@@ -32516,8 +32516,6 @@ const filter = () => {
   const end=document.getElementById('higher').value;
   const min=document.getElementById('min-mag').value;
   const max=document.getElementById('max-mag').value
-//   document.getElementById('lower').value='';
-//   document.getElementById('higher').value='';
   return(Object(_api__WEBPACK_IMPORTED_MODULE_0__["getEventsDate"])(start,end, min, max));
 }
 
@@ -32665,6 +32663,7 @@ const initMap=function(data) {
      }
      let byyear =new Date(data.features[i].properties.time).getFullYear()+1;
      bymonths.push(bymonth+'-'+byyear)
+     
     function HSL(low,high,frac)
     {
       let colors=[];
@@ -32798,7 +32797,6 @@ const initMap=function(data) {
   var heatmap = new google.maps.visualization.HeatmapLayer(
     {
       data: heatmapData,
-      // dissipating: false,
       radius: 50,
     })
   
