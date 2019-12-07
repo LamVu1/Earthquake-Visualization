@@ -132,11 +132,13 @@ export const initMap=function(data) {
         setMapOnCircle(null);
         id.classList.remove('selected');
         id.classList.add('unselected')
+        id.checked = false;
       }
       else if(id.className==="unselected"){
         setMapOnCircle(map);
         id.classList.remove("unselected");
         id.classList.add("selected");
+        id.checked = true;
       }
     })
 
@@ -154,11 +156,13 @@ export const initMap=function(data) {
         setMapOnMarker(null);
         id.classList.remove('selected');
         id.classList.add('unselected');
+        id.checked = false;
       }
       else if(id.className==="unselected"){
         setMapOnMarker(map);
         id.classList.remove("unselected");
         id.classList.add("selected")
+        id.checked = true;
       }
     })
 
@@ -183,11 +187,13 @@ export const initMap=function(data) {
         markerCluster.hide()
         id.classList.remove('selected');
           id.classList.add('unselected');
+          id.checked = false;
       }
       else if(id.className==="unselected"){
         markerCluster.show()
         id.classList.remove("unselected");
         id.classList.add("selected");
+        id.checked = true;
       }
     })
 
@@ -206,12 +212,14 @@ export const initMap=function(data) {
           heatmap.setMap(map)
           id.classList.remove("unselected");
           id.classList.add("selected");
+          id.checked = true;
         }
       else if(id.className==="selected")
         {
           heatmap.setMap(null)
           id.classList.remove('selected');
           id.classList.add('unselected');
+          id.checked = false;
         }
     })
 
