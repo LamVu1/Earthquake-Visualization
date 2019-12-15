@@ -27,7 +27,7 @@
 <body>
     <div id="loader" class="hidden"></div>
     <div class="NAV-BAR">
-            <a href="https://www.linkedin.com/in/lam-vu-4b49a5117/">
+            <a href="https://www.linkedin.com/in/lam-vu-4b49a5117/" target="_blank" >
                 <img src="./src/assets/linkedin.png" class="icons">
             </a>
             <a href="https://github.com/LamVu1" target="_blank">
@@ -49,32 +49,22 @@
             <div id="TogglesMap-Container">
                 <div id="Toggles-Container">
                     <div id="Toggles">
-                            <div id="Toggles-wrap">
-                                <label for="ToggleCircle">
-                                     Magnitude
-                                 </label>
-                                     <input title="Displays magnitude of events according to circle size" class='selected' id="ToggleCircle" type="radio" value="Magnitude" checked>
-                                 
-                            </div>
-                            <div id="Toggles-wrap">
-                                <label for="ToggleHeatMap">
-                                    Heat Map
-                                 </label>
-                                 <input title="Displays distribution of events" class='unselected' id="ToggleHeatMap" type=radio value="Heat Map">
-                            </div>
-                            <div id="Toggles-wrap">
-                                <label for="ToggleCluster">
-                                    Cluster
-                                 </label>
-                                 <input title="Toggles clustering/grouping of events" class='selected' id="ToggleCluster" type=radio value="Cluster" checked>
-                            </div>
-                            <div id="Toggles-wrap">
-                                <label for="ToggleMarkers">
-                                     Markers
-                                 </label>
-                                 <input title="Toggles markers and information of events"class='selected' id="ToggleMarkers" type=radio value="Markers" checked="true">         
-                            </div>
 
+                        <button type="button" title="Displays magnitude of events according to circle size" class='selected' id="ToggleCircle">
+                            Magnitude
+                        </button>                                 
+            
+                        <button  type="button" title="Displays distribution of events" class='unselected' id="ToggleHeatMap" >
+                        Heat Map
+                        </button>
+
+                        <button   type="button" title="Toggles clustering/grouping of events" class='selected' id="ToggleCluster">
+                        Cluster
+                        </button>
+
+                        <button  type="button" title="Toggles markers and information of events"class='selected' id="ToggleMarkers" >
+                            Markers
+                        </button>
                     </div>
                 </div>
                 <div id="Map-Container">

@@ -32726,47 +32726,61 @@ const initMap=function(data) {
           circles[i].setMap(map);
         }
     }
-
-  document.getElementById('ToggleCircle').addEventListener('click',()=>
-    {
+  
+    let ToggleCircle= document.getElementById('ToggleCircle')
+    if(ToggleCircle.className==="selected"){
+      setMapOnCircle(map);
+    }
+    else if(ToggleCircle.className==="unselected"){
+      setMapOnCircle(null);
+    }
+  
+    document.getElementById('ToggleCircle').onclick = ()=>
+    { 
       let id= document.getElementById('ToggleCircle')
       if(id.className==="selected"){
         setMapOnCircle(null);
         id.classList.remove('selected');
         id.classList.add('unselected')
-        id.checked = false;
       }
       else if(id.className==="unselected"){
         setMapOnCircle(map);
         id.classList.remove("unselected");
         id.classList.add("selected");
-        id.checked = true;
       }
-    })
+    }
 
-  function setMapOnMarker(map)
+    function setMapOnMarker(map)
     {
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
       }
     }
+  
+    let ToggleMarkers=document.getElementById('ToggleMarkers')
+    if(ToggleMarkers.className==="selected"){
+      setMapOnMarker(map);
+    }
+    else if(ToggleMarkers.className==="unselected"){
+      setMapOnMarker(null);
+    }
 
-  document.getElementById('ToggleMarkers').addEventListener('click',()=>
-    {
+    document.getElementById('ToggleMarkers').onclick = () =>
+    { 
       let id=document.getElementById('ToggleMarkers')
       if(id.className==="selected"){
         setMapOnMarker(null);
         id.classList.remove('selected');
         id.classList.add('unselected');
-        id.checked = false;
       }
       else if(id.className==="unselected"){
         setMapOnMarker(map);
         id.classList.remove("unselected");
         id.classList.add("selected")
-        id.checked = true;
       }
-    })
+    }
+
+    
 
   var markerCluster = new MarkerClusterer( map, markers,
     {imagePath: './src/assets/m', maxZoom: 7})
@@ -32776,28 +32790,36 @@ const initMap=function(data) {
     this.resetViewport();
     };
   
-  MarkerClusterer.prototype.show = function() {
-    this.setMap(map); // replace map with your reference to the map object
+    MarkerClusterer.prototype.show = function() {
+    this.setMap(map);
     this.redraw();
   };
+
+
+  let ToggleCluster=document.getElementById('ToggleCluster');
+  if(ToggleCluster.className==="selected"){
+    markerCluster.show()
+  }
+  else if(ToggleCluster.className==="unselected"){
+    markerCluster.hide()
+  }
   
 
-  document.getElementById('ToggleCluster').addEventListener('click',()=>
+  document.getElementById('ToggleCluster').onclick = ()=>
     {
       let id=document.getElementById('ToggleCluster');
       if(id.className==="selected"){
         markerCluster.hide()
         id.classList.remove('selected');
-          id.classList.add('unselected');
-          id.checked = false;
+        id.classList.add('unselected');
       }
       else if(id.className==="unselected"){
         markerCluster.show()
         id.classList.remove("unselected");
         id.classList.add("selected");
-        id.checked = true;
       }
-    })
+    }
+
 
 
   var heatmap = new google.maps.visualization.HeatmapLayer(
@@ -32805,31 +32827,44 @@ const initMap=function(data) {
       data: heatmapData,
       radius: 50,
     })
-  
-  document.getElementById('ToggleHeatMap').addEventListener('click',()=>
-    {
-      let id=document.getElementById('ToggleHeatMap')
-      if(id.className==="unselected")
-        {
-          heatmap.setMap(map)
-          id.classList.remove("unselected");
-          id.classList.add("selected");
-          id.checked = true;
-        }
-      else if(id.className==="selected")
+
+
+    let ToggleHeatMap=document.getElementById('ToggleHeatMap')
+    if(ToggleHeatMap.className==="unselected")
         {
           heatmap.setMap(null)
-          id.classList.remove('selected');
-          id.classList.add('unselected');
-          id.checked = false;
         }
-    })
+      else if(ToggleHeatMap.className==="selected")
+        {
+          heatmap.setMap(map)
+        }
+  
+        //onclick versus click handler
+        document.getElementById('ToggleHeatMap').onclick = ()=>
+        {
+          let id=document.getElementById('ToggleHeatMap')
+          if(id.className==="unselected")
+          {
+            heatmap.setMap(map)
+            id.classList.remove("unselected");
+            id.classList.add("selected");
+            
+          }
+          else 
+          {
+            heatmap.setMap(null)
+            id.classList.remove('selected');
+            id.classList.add('unselected');
+             
+          }
+    }
+
+
 
   
 let count={};
 for(let i=0;i<bymonths.length;i++){
   if(bymonths[i] in count){
-    // count[bymonths[i]]=0;
     count[bymonths[i]]+=1;
   }else{
     count[bymonths[i]]=1;
@@ -32839,15 +32874,6 @@ for(let i=0;i<bymonths.length;i++){
  var ctx = document.getElementById('myLineGraph').getContext('2d');
  var ctx2 = document.getElementById('myChart').getContext('2d');
 
-// let zip = [];
-// for(let i=dates.length-1;i>=0;i--){
-//   zip.push({x: dates[i], y:mags[i]})
-// }
-// console.log(zip)
-
-
-// Chart.defaults.global.defaultFontColor='red';
-
  var myLineChart= new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx, {
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
@@ -32855,7 +32881,7 @@ for(let i=0;i<bymonths.length;i++){
     { 
       legend: {
       labels: {
-          fontColor: 'white' //set your desired color
+          fontColor: 'white' 
       }},
       tooltips:
         {mode: 'index',
@@ -32945,7 +32971,7 @@ let myChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx2,{
   options: {
     legend: {
       labels: {
-          fontColor: 'white' //set your desired color
+          fontColor: 'white' 
       }
   },
     tooltips:
