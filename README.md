@@ -1,6 +1,6 @@
 # [Earthquake Visualizer](https://lamvu1.github.io/Earthquake-Visualization/)
 
-![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/Peek%202019-12-05%2020-36.gif)
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/Peek%202019-12-14%2020-01.gif)
 
 # Overview
 California Earthquake Visualizer is a visualization web-application which displays earthquake events in California using Google Maps API.
@@ -25,10 +25,14 @@ Allow the users to input parameters such as minimum and maximum magnitude and da
 
 
 ## Toggle features
-Toggle map features such as magnitude, heat map, clustering, and location markers. Magnitude will display circles with radius and color determined by earthquake magnitude. Color of the circle range from green indication low magnitude to red indicating high magnitude. Heat map displays distribution of events in the location from green to red indicating higher occurences of earthquakes. The clustering feature will cluster nearby events together into a clustering marker when clicked will zoom in and display individual earthquake markers. This feature reduces cluttering of markers and indicate earthquakes in the same location. Location markers will mark the location of the earthquake and when clicked will display a popup window with the location, date, and magnitude of the event.
+Toggle map features such as magnitude, heat map, clustering, and location markers. Heat map displays distribution of events in the location from green to red indicating higher occurences of earthquakes.
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/heatmapsnip.png)
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/heatmap.png)
 
-![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/mapsnap.png)
-![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/toggle.png)
+Magnitude will display circles with radius and color determined by earthquake magnitude. Color of the circle range from green indication low magnitude to red indicating high magnitude. The clustering feature will cluster nearby events together into a clustering marker when clicked will zoom in and display individual earthquake markers. This feature reduces cluttering of markers and indicate earthquakes in the same location. Location markers will mark the location of the earthquake and when clicked will display a popup window with the location, date, and magnitude of the event.
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/map.png)
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/circlecolors.png)
 
 ## Graphs and chart
 Used Chart.js to create a line graph and a bar chart summarizing the earthquake events. The line graph will show the magnitudes of the earthquakes within the date range filtered. The bar chart will show the count of earthquakes in California by months and each bar will be colored in a red gradient.
+![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/graphs.png)
