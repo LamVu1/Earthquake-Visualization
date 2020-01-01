@@ -207,7 +207,7 @@ h1{
   flex-direction: row;
   align-self: flex-end;
   justify-content: flex-end;
-  width: 93%;
+  width: 83%;
   border: white solid thick;
   margin-right: 25px;
   height: 90%;
@@ -301,7 +301,7 @@ h1{
   width: 100%;
   margin: 30px;
   height: 25%;
-  font-size: 70px;
+  font-size: 50px;
   font-weight: 1000;
   letter-spacing: .03em;
   color: white;
@@ -342,16 +342,22 @@ h1{
   background-color: black;
 }
 
-#myLineGraph{
-  padding: 0px 10px;
-  width: 45%;
+#Graph-Container{
+  width: 50%;
   height: 600px;
 }
 
+#myLineGraph{
+  padding:30px 0px 30px 40px;
+  width: 90%;
+  height: 90%;
+}
+
 #myChart{
-  padding: 0px 10px;
-  width: 45%;
-  height: 600px;
+  padding:30px 30px 30px 0px;
+
+  width: 90%;
+  height: 90%;
 }
 
 
