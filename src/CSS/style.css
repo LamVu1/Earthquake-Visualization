@@ -336,7 +336,7 @@ h1{
 #Bottom-Container{
   display: flex;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 150px;
   flex-direction: row;
   justify-content: space-evenly;
   background-color: black;

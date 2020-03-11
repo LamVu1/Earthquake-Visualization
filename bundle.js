@@ -32873,7 +32873,7 @@ for(let i=0;i<bymonths.length;i++){
 
  var ctx = document.getElementById('myLineGraph').getContext('2d');
  var ctx2 = document.getElementById('myChart').getContext('2d');
-
+console.log(dates)
  var myLineChart= new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](ctx, {
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
