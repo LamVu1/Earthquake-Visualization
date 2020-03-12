@@ -1,5 +1,5 @@
 import {style} from './mapstyle'
-import { O_DIRECT } from 'constants';
+// import { O_DIRECT } from 'constants';
 import {Chart} from 'chart.js';
 
 export const initMap=function(data) {
@@ -268,11 +268,10 @@ for(let i=0;i<bymonths.length;i++){
     count[bymonths[i]]=1;
   }
 }
-
  var ctx = document.getElementById('myLineGraph').getContext('2d');
  var ctx2 = document.getElementById('myChart').getContext('2d');
-console.log(dates)
- var myLineChart= new Chart(ctx, {
+ 
+let myLineGraph= new Chart(ctx, {
   type: 'line',
   data: {labels: dates.reverse(), datasets:[{label:'Earthquake Magnitude',data:mags.reverse(), backgroundColor: '#86c9e6'}]},
   options: 
@@ -352,8 +351,7 @@ for(let i=0; i<countlen; i++){
 }
 let eventCounts=data.features.length;
 
-
-let myChart = new Chart(ctx2,{
+ let myChart = new Chart(ctx2,{
   type:'bar',
   data: 
     {
@@ -425,11 +423,26 @@ let myChart = new Chart(ctx2,{
 })
 const eventCountsDiv=document.getElementById('total-count');
 eventCountsDiv.innerHTML='Total Earthquake Count: '+eventCounts
+allcharts.push(myChart);
+allcharts.push(myLineGraph);
+console.log('count',countgraph)
+console.log('linechart',myLineGraph.id)
+console.log('chart',myChart.id)
 
+
+if(allcharts[countgraph*2-2]){
+  
+  let tmp = allcharts[countgraph*2-2]
+  tmp.destroy();
+}
+if(allcharts[countgraph*2-1]){
+  let tmp = allcharts[countgraph*2-1]
+  tmp.destroy();
+}
+countgraph++;
 const form = document.getElementById('filter');
 form.addEventListener('submit',(e)=>{
-  myLineChart.destroy();
-  myChart.destroy();
+ 
   eventCountsDiv.innerHTML='';
 })
 

@@ -8,6 +8,7 @@ import {filter} from './form';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     getEvents().then((data)=>initMap(data));
     const form = document.getElementById('filter');
     form.addEventListener('submit',(e)=>{
