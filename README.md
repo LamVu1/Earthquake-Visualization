@@ -31,10 +31,11 @@ Toggle map features such as magnitude, heat map, clustering, and location marker
 ![alt text](https://app-ecommerce-seeds.s3-us-west-1.amazonaws.com/Heatmap.png)
 
 
+Magnitude will display circles with radius and color determined by earthquake magnitude. Color of the circle range from green indication low magnitude to red indicating high magnitude. The clustering feature will cluster nearby events together into a clustering marker when clicked will zoom in and display individual earthquake markers. This feature reduces cluttering of markers and indicate earthquakes in the same location. Location markers will mark the location of the earthquake and when clicked will display a popup window with the location, date, and magnitude of the event.
+
 ![alt text](https://app-ecommerce-seeds.s3-us-west-1.amazonaws.com/magnitude.png)
 
-Magnitude will display circles with radius and color determined by earthquake magnitude. Color of the circle range from green indication low magnitude to red indicating high magnitude. The clustering feature will cluster nearby events together into a clustering marker when clicked will zoom in and display individual earthquake markers. This feature reduces cluttering of markers and indicate earthquakes in the same location. Location markers will mark the location of the earthquake and when clicked will display a popup window with the location, date, and magnitude of the event.
-![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/map.png)
+
 ![alt text](https://github.com/LamVu1/Earthquake-Visualization/blob/master/src/assets/circlecolors.png)
 
 ## Graphs and chart
